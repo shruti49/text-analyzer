@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { About } from "./MyComponents/About";
+// import { About } from "./MyComponents/About";
 import { Home } from "./MyComponents/Home";
 import { Navbar } from "./MyComponents/Navbar";
 import { Alert } from "./MyComponents/Alert";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 function App() {
 	const [mode, setMode] = useState("Light"); //whether dark mode is enabled or not
@@ -43,7 +43,8 @@ function App() {
 	};
 
 	return (
-		<Router>
+		<>
+	{/* <Router> */}
 			<Navbar
 				title="Text Analyzer"
 				togglMode={modeToggler}
@@ -52,15 +53,16 @@ function App() {
 				color={color}
 			/>
 			<Alert alert={alert} />
-			<Switch>
-				<Route exact path="/">
+			{/* <Switch>
+				<Route exact path="/"> */}
 					<Home mode={mode} showAlert={showAlert} />
-				</Route>
-				<Route path="/about">
-					<About />
-				</Route>
+				{/* </Route>
+				 <Route path="/about">
+				 	<About />
+				 </Route>
 			</Switch>
-		</Router>
+		</Router> */}
+			</>
 	);
 }
 

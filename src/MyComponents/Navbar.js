@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export const Navbar = (props) => {
 	return (
@@ -7,9 +7,9 @@ export const Navbar = (props) => {
 			className={`navbar navbar-expand-lg navbar-${props.mode.toLowerCase()} bg-${props.mode.toLowerCase()}`}
 		>
 			<div className="container-fluid">
-				<Link className="navbar-brand" to="/">
+				<a className="navbar-brand" href="/">
 					{props.title}
-				</Link>
+				</a>
 				<button
 					className="navbar-toggler"
 					type="button"
@@ -24,18 +24,18 @@ export const Navbar = (props) => {
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<Link className="nav-link active" aria-current="page" to="/">
+							<a className="nav-link active" aria-current="page" href="/">
 								Home
-							</Link>
+							</a>
 						</li>
 					</ul>
-					<ul className="navbar-nav">
+					{/* <ul className="navbar-nav">
 						<li className="nav-item">
 							<Link className="nav-link active" aria-current="page" to="/about">
 								About
 							</Link>
 						</li>
-					</ul>
+					</ul> */}
 				</div>
 				<div className="mx-2 d-flex align-items-center">
 					<input
