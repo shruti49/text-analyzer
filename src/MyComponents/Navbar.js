@@ -7,7 +7,7 @@ export const Navbar = (props) => {
 			className={`navbar navbar-expand-lg navbar-${props.mode.toLowerCase()} bg-${props.mode.toLowerCase()}`}
 		>
 			<div className="container-fluid">
-				<a className="navbar-brand" href="/">
+				<a className="navbar-brand" href="#">
 					{props.title}
 				</a>
 				<button
@@ -24,7 +24,7 @@ export const Navbar = (props) => {
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<a className="nav-link active" aria-current="page" href="/">
+							<a className="nav-link active" aria-current="page" href="#">
 								Home
 							</a>
 						</li>
