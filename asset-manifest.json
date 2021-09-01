@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/text-analyzer/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/text-analyzer/static/js/main.d4409981.chunk.js",
+    "main.js.map": "/text-analyzer/static/js/main.d4409981.chunk.js.map",
+    "runtime-main.js": "/text-analyzer/static/js/runtime-main.0611edf1.js",
+    "runtime-main.js.map": "/text-analyzer/static/js/runtime-main.0611edf1.js.map",
+    "static/css/2.983f79de.chunk.css": "/text-analyzer/static/css/2.983f79de.chunk.css",
+    "static/js/2.35ba8645.chunk.js": "/text-analyzer/static/js/2.35ba8645.chunk.js",
+    "static/js/2.35ba8645.chunk.js.map": "/text-analyzer/static/js/2.35ba8645.chunk.js.map",
+    "static/js/3.7023cc1f.chunk.js": "/text-analyzer/static/js/3.7023cc1f.chunk.js",
+    "static/js/3.7023cc1f.chunk.js.map": "/text-analyzer/static/js/3.7023cc1f.chunk.js.map",
+    "index.html": "/text-analyzer/index.html",
+    "static/css/2.983f79de.chunk.css.map": "/text-analyzer/static/css/2.983f79de.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/text-analyzer/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.35ba8645.chunk.js.LICENSE.txt": "/text-analyzer/static/js/2.35ba8645.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0611edf1.js",
+    "static/css/2.983f79de.chunk.css",
+    "static/js/2.35ba8645.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.d4409981.chunk.js"
+  ]
+}
