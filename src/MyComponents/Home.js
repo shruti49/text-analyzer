@@ -42,27 +42,33 @@ export const Home = (props) => {
 	};
 
 	const handleclearText = () => {
-		setText("");
-		props.showAlert("Textarea cleared!", "success");
+		if (text.length > 0) {
+			setText("");
+			props.showAlert("Textarea cleared!", "success");
+		}
 	};
 
 	const handleCopyText = () => {
-		/* Get the text field */
-		var copyText = document.getElementById("analyseArea");
+		if (text.length > 0) {
+			/* Get the text field */
+			var copyText = document.getElementById("analyseArea");
 
-		/* Select the text field */
-		copyText.select();
-		copyText.setSelectionRange(0, 99999); /* For mobile devices */
+			/* Select the text field */
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-		/* Copy the text inside the text field */
-		navigator.clipboard.writeText(copyText.value);
-		props.showAlert("Copied to Clipboard!", "success");
+			/* Copy the text inside the text field */
+			navigator.clipboard.writeText(copyText.value);
+			props.showAlert("Copied to Clipboard!", "success");
+		}
 	};
 
 	const handleExtraSpaces = () => {
-		let newText = text.split(/[ ] + /);
-		setText(newText.join(" "));
-		props.showAlert("Extra spaces has been removed!", "success");
+		if (text.length > 0) {
+			let newText = text.split(/[ ] + /);
+			setText(newText.join(" "));
+			props.showAlert("Extra spaces has been removed!", "success");
+		}
 	};
 
 	return (
@@ -112,10 +118,10 @@ export const Home = (props) => {
 							Characters - {text.length}
 						</h6>
 						<h6 className={`mx-3 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
-							Words - {text.split(" ").length}
+							Words - {text.split(" ").filter((element) => element.length !== 0).length}
 						</h6>
 						<h6 className={`mx-3 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
-							Lines - {text.split(/\r?\n|\r/).length + 1}
+							Lines - {text.split(/\r?\n|\r/).length}
 						</h6>
 					</div>
 
