@@ -14,7 +14,7 @@ function App() {
 
 	const handleChangeColor = (e) => {
 		setColor(e.target.value);
-		document.body.style.backgroundColor = color;
+		document.body.style.backgroundColor = e.target.value;
 	};
 
 	const showAlert = (message, type) => {
@@ -54,10 +54,10 @@ function App() {
 			<Alert alert={alert} />
 			<Switch>
 				<Route exact path="/">
-					<Home mode={mode} showAlert={showAlert} />
+					<Home mode={mode} showAlert={showAlert} heading="Enter the text to analyze"/>
 				</Route>
 				<Route exact path="/about">
-					<About mode={mode} />
+					<About mode={mode} heading="About Us"/>
 				</Route>
 			</Switch>
 		</Router>

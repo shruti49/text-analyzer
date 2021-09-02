@@ -75,7 +75,7 @@ export const Home = (props) => {
 		<div>
 			<div className="container mt-3">
 				<h2 className={`mb-3 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
-					Enter the text to analyze
+					{props.heading}
 				</h2>
 				<textarea
 					className="form-control"
@@ -85,9 +85,9 @@ export const Home = (props) => {
 					rows="5"
 					id="analyseArea"
 				/>
-				<div className="row mt-2">
-					<div className="form-group col-md-4">
-						<select className="form-control" onChange={handleChange}>
+				<div className="row">
+					<div className="form-group col-md-4 mt-3">
+						<select className="form-select form-select-md" onChange={handleChange}>
 							<option>Select any case</option>
 							<option value="uppercase">Uppercase</option>
 							<option value="lowercase">Lowercase</option>
@@ -95,13 +95,13 @@ export const Home = (props) => {
 						</select>
 					</div>
 					<div className="form-group col">
-						<button className="btn btn-secondary" onClick={handleclearText}>
+						<button className="btn btn-secondary mt-3" onClick={handleclearText}>
 							Clear Text
 						</button>
-						<button className="btn btn-secondary mx-3" onClick={handleCopyText}>
+						<button className="btn btn-secondary mt-3 mx-3" onClick={handleCopyText}>
 							Copy Text
 						</button>
-						<button className="btn btn-secondary" onClick={handleExtraSpaces}>
+						<button className="btn btn-secondary mt-3" onClick={handleExtraSpaces}>
 							Remove Extra Spaces
 						</button>
 					</div>
