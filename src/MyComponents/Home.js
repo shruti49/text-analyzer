@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { PropTypes } from "prop-types";
 
 export const Home = (props) => {
 	const [text, setText] = useState("");
@@ -74,7 +75,7 @@ export const Home = (props) => {
 	return (
 		<div>
 			<div className="container mt-3">
-				<h2 className={`mb-3 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
+				<h2 className={`mb-3 text-${props.mode === "dark" ? "light" : "dark"}`}>
 					{props.heading}
 				</h2>
 				<textarea
@@ -110,26 +111,26 @@ export const Home = (props) => {
 
 			{text.length > 0 && (
 				<div className="container mt-3">
-					<h4 className={`text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
+					<h4 className={`text-${props.mode === "dark" ? "light" : "dark"}`}>
 						Text Summary
 					</h4>
 					<div className="d-flex">
-						<h6 className={`text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
+						<h6 className={`text-${props.mode === "dark" ? "light" : "dark"}`}>
 							Characters - {text.length}
 						</h6>
-						<h6 className={`mx-3 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
+						<h6 className={`mx-3 text-${props.mode === "dark" ? "light" : "dark"}`}>
 							Words - {text.split(" ").filter((element) => element.length !== 0).length}
 						</h6>
-						<h6 className={`mx-3 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
+						<h6 className={`mx-3 text-${props.mode === "dark" ? "light" : "dark"}`}>
 							Lines - {text.split(/\r?\n|\r/).length}
 						</h6>
 					</div>
 
-					<h4 className={`mt-3 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
+					<h4 className={`mt-3 text-${props.mode === "dark" ? "light" : "dark"}`}>
 						Text Viewer
 					</h4>
 					<p
-						className={`border p-2 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}
+						className={`border p-2 text-${props.mode === "dark" ? "light" : "dark"}`}
 					>
 						{text}
 					</p>
@@ -138,3 +139,12 @@ export const Home = (props) => {
 		</div>
 	);
 };
+
+Home.propTypes = {
+	heading: PropTypes.string.isRequired,
+	mode: PropTypes.string,
+};
+
+Home.defaultProps = {
+	heading: "Word Counter"
+}

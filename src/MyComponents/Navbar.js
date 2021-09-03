@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 export const Navbar = (props) => {
 	return (
 		<nav
-			className={`navbar navbar-expand-lg navbar-${props.mode.toLowerCase()} bg-${props.mode.toLowerCase()}`}
+			className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
 		>
 			<div className="container-fluid">
 				<Link className="navbar-brand" to="/">
@@ -34,7 +35,35 @@ export const Navbar = (props) => {
 							</Link>
 						</li>
 					</ul>
-					<form className="d-flex">
+					<form className="d-flex align-items-center">
+						<div
+							className="bg-success mx-2 rounded"
+							style={{ height: "20px", width: "20px" }}
+							onClick={() => {
+								props.togglMode("success");
+							}}
+						></div>
+						<div
+							className="bg-primary mx-2 rounded"
+							style={{ height: "20px", width: "20px" }}
+							onClick={() => {
+								props.togglMode("primary");
+							}}
+						></div>
+						<div
+							className="bg-warning mx-2 rounded"
+							style={{ height: "20px", width: "20px" }}
+							onClick={() => {
+								props.togglMode("warning");
+							}}
+						></div>
+						<div
+							className="bg-danger mx-2 rounded"
+							style={{ height: "20px", width: "20px" }}
+							onClick={() => {
+								props.togglMode("danger");
+							}}
+						></div>
 						<div className="mx-2 d-flex align-items-center">
 							<input
 								type="color"
@@ -56,17 +85,19 @@ export const Navbar = (props) => {
 						<div className="form-check form-switch">
 							<input
 								className="form-check-input"
-								onChange={props.togglMode}
+								onChange={() => {
+									props.togglMode(props.mode);
+								}}
 								type="checkbox"
 								id="flexSwitchCheckDefault"
 							/>
 							<label
 								className={`form-check-label text-${
-									props.mode.toLowerCase() === "dark" ? "light" : "dark"
+									props.mode === "dark" ? "light" : "dark"
 								}`}
 								htmlFor="flexSwitchCheckDefault"
 							>
-								Enable {props.mode === "Dark" ? "Light" : "Dark"} Mode
+								Toggle Mode
 							</label>
 						</div>
 					</form>
@@ -75,3 +106,9 @@ export const Navbar = (props) => {
 		</nav>
 	);
 };
+
+Navbar.propTypes = {
+	title: PropTypes.string.isRequired,
+	mode: PropTypes.string,
+	color:PropTypes.string,
+}
