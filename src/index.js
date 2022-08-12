@@ -1,16 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-      </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+	<Provider store={store}>
+		<React.StrictMode>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</React.StrictMode>
+	</Provider>,
+	document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
