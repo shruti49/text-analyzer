@@ -1,8 +1,25 @@
 import React, { useState } from "react";
 import { PropTypes } from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { setAlert } from "../reducers/alertSlice";
 
 export const Home = (props) => {
 	const [text, setText] = useState("");
+	const dispatch = useDispatch();
+	const mode = useSelector((state) => state.toggleTheme.value);
+
+	const showAlert = (message, type) => {
+		dispatch(
+			setAlert({
+				msg: message,
+				type: type,
+			})
+		);
+
+		setTimeout(() => {
+			dispatch(setAlert({ msg: "", type: "" }));
+		}, 1500);
+	};
 
 	const inputChange = (e) => {
 		setText(e.target.value);
@@ -13,11 +30,11 @@ export const Home = (props) => {
 			switch (e.target.value) {
 				case "lowercase":
 					setText(text.toLowerCase());
-					props.showAlert("Changed to lowecase!", "success");
+					showAlert("Changed to lowecase!", "success");
 					break;
 				case "uppercase":
 					setText(text.toUpperCase());
-					props.showAlert("Changed to upercase!", "success");
+					showAlert("Changed to upercase!", "success");
 					break;
 				case "capitalize":
 					//let arr = text.split(" ");
@@ -34,7 +51,7 @@ export const Home = (props) => {
 
 					let newText = arr.toString().replaceAll(",", "");
 					setText(newText);
-					props.showAlert("Text capitalized successfully!", "success");
+					showAlert("Text capitalized successfully!", "success");
 					break;
 				default:
 					break;
@@ -45,7 +62,7 @@ export const Home = (props) => {
 	const handleclearText = () => {
 		if (text.length > 0) {
 			setText("");
-			props.showAlert("Textarea cleared!", "success");
+			showAlert("Textarea cleared!", "success");
 		}
 	};
 
@@ -60,7 +77,7 @@ export const Home = (props) => {
 
 			/* Copy the text inside the text field */
 			navigator.clipboard.writeText(copyText.value);
-			props.showAlert("Copied to Clipboard!", "success");
+			showAlert("Copied to Clipboard!", "success");
 		}
 	};
 
@@ -68,16 +85,14 @@ export const Home = (props) => {
 		if (text.length > 0) {
 			let newText = text.split(/[ ] + /);
 			setText(newText.join(" "));
-			props.showAlert("Extra spaces has been removed!", "success");
+			showAlert("Extra spaces has been removed!", "success");
 		}
 	};
 
 	return (
 		<div>
 			<div className="container mt-3">
-				<h2 className={`mb-3 text-${props.mode === "dark" ? "light" : "dark"}`}>
-					{props.heading}
-				</h2>
+				<h2 className={`mb-3 text-${mode === "light" ? "light" : "dark"}`}>{props.heading}</h2>
 				<textarea
 					className="form-control"
 					type="text"
@@ -111,29 +126,21 @@ export const Home = (props) => {
 
 			{text.length > 0 && (
 				<div className="container mt-3">
-					<h4 className={`text-${props.mode === "dark" ? "light" : "dark"}`}>
-						Text Summary
-					</h4>
+					<h4 className={`text-${mode === "dark" ? "dark" : "light"}`}>Text Summary</h4>
 					<div className="d-flex">
-						<h6 className={`text-${props.mode === "dark" ? "light" : "dark"}`}>
+						<h6 className={`text-${mode === "dark" ? "dark" : "light"}`}>
 							Characters - {text.length}
 						</h6>
-						<h6 className={`mx-3 text-${props.mode === "dark" ? "light" : "dark"}`}>
+						<h6 className={`mx-3 text-${mode === "dark" ? "dark" : "light"}`}>
 							Words - {text.split(" ").filter((element) => element.length !== 0).length}
 						</h6>
-						<h6 className={`mx-3 text-${props.mode === "dark" ? "light" : "dark"}`}>
+						<h6 className={`mx-3 text-${mode === "dark" ? "dark" : "light"}`}>
 							Lines - {text.split(/\r?\n|\r/).length}
 						</h6>
 					</div>
 
-					<h4 className={`mt-3 text-${props.mode === "dark" ? "light" : "dark"}`}>
-						Text Viewer
-					</h4>
-					<p
-						className={`border p-2 text-${props.mode === "dark" ? "light" : "dark"}`}
-					>
-						{text}
-					</p>
+					<h4 className={`mt-3 text-${mode === "dark" ? "dark" : "light"}`}>Text Viewer</h4>
+					<p className={`border p-2 text-${mode === "dark" ? "dark" : "light"}`}>{text}</p>
 				</div>
 			)}
 		</div>
@@ -142,9 +149,8 @@ export const Home = (props) => {
 
 Home.propTypes = {
 	heading: PropTypes.string.isRequired,
-	mode: PropTypes.string,
 };
 
 Home.defaultProps = {
-	heading: "Word Counter"
-}
+	heading: "Word Counter",
+};

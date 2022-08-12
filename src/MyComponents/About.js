@@ -1,9 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export const About = (props) => {
+	const mode = useSelector((state) => state.toggleTheme.value);
+	
 	return (
 		<div className="container mt-3">
-			<h2 className={`mb-3 text-${props.mode.toLowerCase() === "dark" ? "light" : "dark"}`}>
+			<h2 className={`mb-3 text-${mode.toLowerCase() === "light" ? "light" : "dark"}`}>
 				{props.heading}
 			</h2>
 			<div className="accordion" id="accordionExample">
